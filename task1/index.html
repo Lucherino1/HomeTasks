@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <div class="border-b flex items-center justify-center py-16">
+      <h1 class="text-3xl font-bold">POSTS</h1>
+    </div>
+
+    <div class="flex items-center justify-between border-b py-5 px-[100px]">
+      <label class="flex flex-col">
+        Posts qty:
+
+        <select
+          id="qty-select"
+          class="w-[100px] h-[30px] mt-2 rounded border border-slate-950"
+        >
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+          <option value="All">All</option>
+        </select>
+      </label>
+
+      <button
+        id="refresh-btn"
+        class="px-2 py-1 bg-sky-600 hover:bg-sky-500 rounded-md text-white cursor-pointer transition-colors"
+      >
+        Refresh
+      </button>
+    </div>
+
+    <div class="post-list" id="post-list"></div>
+
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>
