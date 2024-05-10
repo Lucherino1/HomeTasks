@@ -1,3 +1,3 @@
 # Repo for Homeworks
 
-## Find each homework on a separate branch
+## Each homework related to a topic is on a separate branch with a short topic title
