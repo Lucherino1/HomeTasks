@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+  <body>
+    <div class="border-b flex items-center justify-center py-16">
+      <h1 class="text-3xl font-bold">Search users</h1>
+    </div>
+
+    <div class="flex items-center">
+      <div class="flex-1 flex items-center p-3">
+        <h2 class="text-xl font-medium">Search for a user:</h2>
+
+        <div class="search relative flex w-[200px] ml-2 border rounded">
+          <input class="w-full p-1 rounded text-sm outline-none" />
+
+          <div id="search-options-container"></div>
+        </div>
+      </div>
+
+      <div class="flex-1 p-3">
+        <h2 class="text-xl font-medium">Searched user:</h2>
+
+        <div id="#searched-user-container"></div>
+      </div>
+    </div>
+
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>
