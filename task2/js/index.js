@@ -7,14 +7,6 @@ const $searchedUserContainer = document.getElementById(
 const $userContainer = document.getElementById("search-options-container");
 const endPoint = "https://jsonplaceholder.typicode.com/users";
 
-function debounceFetchData(func, delay) {
-  let timeoutId;
-  return function (...args) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func.apply(this, args), delay);
-  };
-}
-
 function displayUsers(users, container) {
   const searchOptionsContainer = document.createElement("div");
   searchOptionsContainer.classList.add("search-options");
@@ -37,6 +29,14 @@ function fetchData(searchUser, container) {
     .then((response) => response.json())
     .then((users) => displayUsers(users, container))
     .catch((error) => console.error("Fetch Error:", error));
+}
+
+function debounceFetchData(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func.apply(this, args), delay);
+  };
 }
 
 $searchInput.addEventListener(
@@ -79,6 +79,7 @@ function displaySelectedUser(userData) {
     email,
     phone,
   } = userData;
+
   const phoneNumber = phone.split(" x")[0];
   const phoneNumberHref = "+" + phoneNumber.replace(/\D/g, "");
 
