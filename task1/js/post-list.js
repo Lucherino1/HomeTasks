@@ -7,8 +7,8 @@ export class PostList {
   }
 
   async fetchPosts(url, limit) {
+    const queryParams = limit === "All" ? "" : `?_limit=${limit}`;
     try {
-      const queryParams = limit === "All" ? "" : `?_limit=${limit}`;
       const response = await fetch(`${url}${queryParams}`);
       if (!response.ok) {
         throw new Error("Failed to fetch posts");
