@@ -51,12 +51,9 @@ function debounceFetchData(func, delay) {
   };
 }
 
-$searchInput.addEventListener(
-  "input",
-  debounceFetchData(displayUsersOnInput, 400)
-);
+$searchInput.addEventListener("input", debounceFetchData(handleUserInput, 400));
 
-function displayUsersOnInput() {
+function handleUserInput() {
   $userContainer.innerHTML = "";
   const searchUser = $searchInput.value.trim().toLowerCase();
   if (searchUser.length > 0) {
