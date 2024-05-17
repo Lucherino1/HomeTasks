@@ -11,6 +11,18 @@ function displayUsers(users, container) {
   const searchOptionsContainer = document.createElement("div");
   searchOptionsContainer.classList.add("search-options");
 
+  function createSearchOption(user) {
+    const searchOption = document.createElement("div");
+    searchOption.classList.add("search-option");
+    searchOption.textContent = user.name;
+
+    searchOption.addEventListener("click", () => {
+      displaySelectedUser(user);
+    });
+
+    return searchOption;
+  }
+
   if (users.length > 0) {
     users.forEach((user) => {
       const searchOption = createSearchOption(user);
@@ -50,18 +62,6 @@ function displayUsersOnInput() {
   if (searchUser.length > 0) {
     fetchData(searchUser, $userContainer);
   }
-}
-
-function createSearchOption(user) {
-  const searchOption = document.createElement("div");
-  searchOption.classList.add("search-option");
-  searchOption.textContent = user.name;
-
-  searchOption.addEventListener("click", () => {
-    displaySelectedUser(user);
-  });
-
-  return searchOption;
 }
 
 function displaySelectedUser(userData) {
