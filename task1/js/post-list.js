@@ -1,24 +1,29 @@
+import { Post } from "./post.js";
+
 export class PostList {
   constructor(selector) {
-    this.selector = selector;
+    this.container = document.querySelector(selector);
+    this.posts = [];
   }
 
   async fetchPosts(url, limit) {
-    if (limit !== "All") {
-      url += `?_limit=${limit}`;
-    }
-
-    let response = await fetch(url);
-
-    if (response.ok) {
-      let json = await response.json();
-      return json;
-    } else {
-      alert("HTTP error: " + response.status);
+    try {
+      const queryParams = limit === "All" ? "" : `?_limit=${limit}`;
+      const response = await fetch(`${url}${queryParams}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      const data = await response.json();
+      this.posts = data.map((postData) => new Post(postData));
+    } catch (error) {
+      console.error(`Error fetching posts: ${error}`);
     }
   }
 
-  mountPosts(postsHTML) {
-    this.selector.innerHTML = postsHTML;
+  mountPosts() {
+    this.container.innerHTML = "";
+    this.posts.forEach((post) => {
+      this.container.insertAdjacentHTML("beforeend", post.postDOMElement);
+    });
   }
 }

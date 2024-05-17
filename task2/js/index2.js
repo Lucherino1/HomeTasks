@@ -49,12 +49,12 @@ function displayUsers(users, container) {
 
     if (target) {
       const userData = JSON.parse(target.dataset.user);
-      const searchedUserContainer = document.getElementById(
-        "searched-user-container"
-      );
+
+      const searchedUser = document.createElement("div");
+      searchedUser.classList.add("searched-user");
       const phoneNumber = userData.phone.split(" x")[0];
       const phoneNumberHref = "+" + phoneNumber.replace(/\D/g, "");
-      searchedUserContainer.innerHTML = ` 
+      $searchedUserContainer.innerHTML = ` 
         <h3 class="searched-user__name">${userData.name} (${userData.username}), ${userData.company.name}</h3> 
         <p class="searched-user__address">${userData.address.city}, ${userData.address.street}, ${userData.address.suite}</p> 
         <a href="mailto:${userData.email}" class="searched-user__contact-data">${userData.email}</a>, 
