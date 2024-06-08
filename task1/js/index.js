@@ -2,7 +2,7 @@ import { PostList } from "./post-list.js";
 const postList = new PostList("#post-list");
 
 const url = "https://jsonplaceholder.typicode.com/posts";
-
+console.log(url);
 const $qtySelect = document.getElementById("qty-select");
 $qtySelect.addEventListener("change", async function () {
   const limit = $qtySelect.value;
