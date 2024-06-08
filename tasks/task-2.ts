@@ -4,47 +4,44 @@
 */
 
 interface IUser {
-  name: string
-  age: number
-  occupation: string
+  name: string;
+  age: number;
+  occupation: string;
 }
 
 interface IAdmin {
-  name: string
-  age: number
-  role: string
+  name: string;
+  age: number;
+  role: string;
 }
 
-type TPerson = unknown
+type TPerson = IUser | IAdmin;
 
-const persons: IUser[] /* <- замінити на IPerson[] */ = [
+const persons: TPerson[] /* <- замінити на IPerson[] */ = [
   {
-    name: 'Max Mustermann',
+    name: "Max Mustermann",
     age: 25,
-    occupation: 'Chimney sweep'
+    occupation: "Chimney sweep",
   },
   {
-    name: 'Jane Doe',
+    name: "Jane Doe",
     age: 32,
-    role: 'Administrator'
+    role: "Administrator",
   },
   {
-    name: 'Kate Müller',
+    name: "Kate Müller",
     age: 23,
-    occupation: 'Astronaut'
+    occupation: "Astronaut",
   },
   {
-    name: 'Bruce Willis',
+    name: "Bruce Willis",
     age: 64,
-    role: 'World saver'
-  }
-]
+    role: "World saver",
+  },
+];
 
-function logPerson (user: IUser) {
-  console.log(` - ${user.name}, ${user.age}`)
+function logPerson(user: IUser) {
+  console.log(` - ${user.name}, ${user.age}`);
 }
 
-export {
-  persons,
-  logPerson
-}
+export { persons, logPerson };
