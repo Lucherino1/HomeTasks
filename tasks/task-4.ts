@@ -16,46 +16,45 @@
 */
 
 interface IUser {
-  id: number
-  name: string
+  id: number;
+  name: string;
 }
 
-class Collection {
-  private elements = []
+class Collection<T> {
+  private elements: T[];
 
-  constructor (elements = []) {
-    this.elements = elements
+  constructor(elements: T[] = []) {
+    this.elements = elements;
   }
 
-  get () {
-    return this.elements
+  get(): T[] {
+    return this.elements;
   }
 
-  add (el, type) {
-    // ...
+  add(el: T, type: "append" | "prepand" = "append") {
+    if (type === "prepand") {
+      this.elements.unshift(el);
+    } else this.elements.push(el);
   }
 
-  contains (predicate) {
-    // ...
+  contains(predicate: (el: T) => boolean): boolean {
+    return this.elements.some(predicate);
   }
 
-  delete (predicate) {
-    // ...
+  delete(predicate: (el: T) => boolean) {
+    this.elements = this.elements.filter((el) => !predicate(el));
   }
 }
 
-const stringCollection = new Collection()
-stringCollection.add('Hello, World!')
-stringCollection.contains(el => el === 'Hello, TS')
+const stringCollection = new Collection<string>();
+stringCollection.add("Hello, World!");
+stringCollection.contains((el) => el === "Hello, TS");
 
-const strings = stringCollection.get()
+const strings = stringCollection.get();
 
-const userCollection = new Collection()
-userCollection.add({ id: 1, name: 'Viktor' })
-userCollection.delete(el => el.id === 1)
-const users = userCollection.get()
+const userCollection = new Collection<IUser>();
+userCollection.add({ id: 1, name: "Viktor" });
+userCollection.delete((el) => el.id === 1);
+const users = userCollection.get();
 
-export {
-  strings,
-  users
-}
+export { strings, users };

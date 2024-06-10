@@ -4,25 +4,23 @@
 */
 
 interface IFirst {
-  a?: number
-  b?: string
-  c?: string
+  a?: number;
+  b?: string;
+  c?: string;
 }
 
 interface ISecond {
-  d: string
-  e: number
-  f: number
+  d: string;
+  e: number;
+  f: number;
 }
 
 interface IThird {
-  g: boolean
-  h: string
-  i: number
+  g: boolean;
+  h: string;
+  i: number;
 }
 
-type TUnified = unknown // ...
+type TUnified = IFirst & Pick<ISecond, "d"> & Omit<IThird, "h">;
 
-export {
-  type TUnified
-}
+export { type TUnified };
